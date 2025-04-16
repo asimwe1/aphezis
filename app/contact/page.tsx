@@ -229,8 +229,8 @@ export default function ContactPage() {
                             <Phone className="h-6 w-6 text-primary" />
                           </motion.div>
                           <div>
-                            <h3 className="font-bold">Call Us</h3>
-                            <p className="text-muted-foreground">+250 790 415 761</p>
+                            <h3 className="font-bold">Call and Whatsap us</h3>
+                            <p className="text-muted-foreground">+250 790 415 761/ +86 183 0507 3441</p>
                           </div>
                         </div>
                       </CardContent>
