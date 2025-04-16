@@ -202,7 +202,7 @@ export default function Home() {
                 <FadeIn delay={0.3}>
                   <div className="flex flex-col gap-2 min-[400px]:flex-row">
                     <Link href="/solutions">
-                      <Button className="inline-flex h-10 items-center justify-center group">
+                      <Button className="inline-flex bg-blue-700 h-10 items-center justify-center group">
                         Explore Solutions
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </Button>
@@ -245,7 +245,7 @@ export default function Home() {
                         }}
                         transition={{ duration: 0.2 }}
                       >
-                        <Code className="h-6 w-6 text-primary" />
+                        <Code className="h-6 w-6 text-blue-700" />
                       </motion.div>
                       <h3 className="text-xl font-bold">Software Development</h3>
                       <p className="text-muted-foreground">
@@ -268,7 +268,7 @@ export default function Home() {
                         }}
                         transition={{ duration: 0.2 }}
                       >
-                        <Globe className="h-6 w-6 text-primary" />
+                        <Globe className="h-6 w-6 text-blue-700" />
                       </motion.div>
                       <h3 className="text-xl font-bold">Web Development</h3>
                       <p className="text-muted-foreground">
@@ -291,7 +291,7 @@ export default function Home() {
                         }}
                         transition={{ duration: 0.2 }}
                       >
-                        <LineChart className="h-6 w-6 text-primary" />
+                        <LineChart className="h-6 w-6 text-blue-700" />
                       </motion.div>
                       <h3 className="text-xl font-bold">Forex & Crypto Trading</h3>
                       <p className="text-muted-foreground">
@@ -383,7 +383,7 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground">
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-blue-700 text-primary-foreground">
           <div className="container px-4 md:px-6">
             <FadeIn>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -401,8 +401,8 @@ export default function Home() {
                   whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Link href="/contact">
-                    <Button variant="secondary" size="lg" className="group">
+                  <Link className="text-blue-700" href="/contact">
+                    <Button variant="secondary" size="lg" className="text-blue-700 group">
                       Get Started Today
                       <motion.span
                         className="ml-2"

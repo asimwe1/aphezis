@@ -28,7 +28,8 @@ export default function Header() {
       animate={{ y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8" aria-label="Global">
+      <div className="bg-blue-800 border-gray-900/10">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between py-2 px-6 lg:px-8" aria-label="Global">
         <motion.div
           className="flex lg:flex-1"
           initial={{ opacity: 0 }}
@@ -71,14 +72,14 @@ export default function Header() {
               <Link
                 href={item.href}
                 className={cn(
-                  "text-sm font-semibold leading-6 transition-colors hover:text-primary relative",
-                  pathname === item.href ? "text-primary" : "text-foreground/80",
+                  "text-sm font-semibold leading-6 transition-colors hover:text-white relative",
+                  pathname === item.href ? "text-white" : "text-white/80",
                 )}
               >
                 {item.name}
                 {pathname === item.href && (
                   <motion.span
-                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-primary"
+                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-white"
                     layoutId="underline"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
@@ -96,6 +97,7 @@ export default function Header() {
           <ThemeToggle />
         </motion.div>
       </nav>
+      </div>
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
