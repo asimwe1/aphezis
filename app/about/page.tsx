@@ -19,7 +19,7 @@ export default function AboutPage() {
     <PageTransition>
       <div className="flex flex-col min-h-screen">
         {/* Hero Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-5 md:py-10 lg:py-16">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
               <SlideIn direction="left">
@@ -60,7 +60,7 @@ export default function AboutPage() {
         </section>
 
         {/* Stats Section */}
-        <section className="w-full py-8 md:py-12">
+        <section className="w-full">
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
               <FadeIn className="flex flex-col items-center justify-center p-4 text-center">
@@ -92,7 +92,7 @@ export default function AboutPage() {
         </section>
 
         {/* Mission & Vision */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
+        <section className="w-full py-4 md:py-8 lg:py-10 bg-muted/50">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
               <SlideIn direction="left">
@@ -151,7 +151,7 @@ export default function AboutPage() {
         </section>
 
         {/* Values */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-4 md:py-8 lg:py-10">
           <div className="container px-4 md:px-6">
             <FadeIn>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -238,7 +238,7 @@ export default function AboutPage() {
         </section>
 
         {/* Team */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
+        <section className="w-full py-2 bg-muted/50">
           <div className="container px-4 md:px-6">
             <FadeIn>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -250,7 +250,7 @@ export default function AboutPage() {
                 </div>
               </div>
             </FadeIn>
-            <StaggerContainer className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
+            <StaggerContainer className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-6 md:grid-cols-2 lg:grid-cols-3">
               <StaggerItem>
                 <HoverScale>
                   <Card className="bg-background/50 backdrop-blur-sm border border-primary/10 hover:border-primary/30 transition-all duration-300">

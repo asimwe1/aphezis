@@ -9,7 +9,10 @@ import { FadeIn, SlideIn, StaggerContainer, StaggerItem, HoverScale, PageTransit
 import { motion } from "framer-motion"
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import { OrbitControls } from "three-stdlib"
+import AboutPage from "./about/page"
+import SolutionsPage from "./solutions/page"
+import ContactPage from "./contact/page"
 
 // Dynamically import ThreeScene to ensure client-side rendering
 const ThreeScene = dynamic(() => Promise.resolve(() => {
@@ -68,7 +71,6 @@ const ThreeScene = dynamic(() => Promise.resolve(() => {
     const mouse = new THREE.Vector2()
 
     // State for cursor interaction
-    let isCursorInCanvas = false
     const defaultPosition = new THREE.Vector3(0, 1.5, -15) // Right side, vertically centered
     const targetPosition = new THREE.Vector3().copy(defaultPosition)
 
@@ -112,7 +114,6 @@ const ThreeScene = dynamic(() => Promise.resolve(() => {
     const onMouseMove = (event: MouseEvent) => {
       if (!containerRef.current) return
 
-      isCursorInCanvas = true
       const rect = containerRef.current.getBoundingClientRect()
       mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1
       mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1
@@ -129,7 +130,6 @@ const ThreeScene = dynamic(() => Promise.resolve(() => {
 
     // Handle Mouse Leave
     const onMouseLeave = () => {
-      isCursorInCanvas = false
       targetPosition.copy(defaultPosition)
     }
 
@@ -179,11 +179,12 @@ const ThreeScene = dynamic(() => Promise.resolve(() => {
 }), { ssr: false })
 
 export default function Home() {
+
   return (
     <PageTransition>
       <div className="flex flex-col min-h-screen">
         {/* Hero Section */}
-        <section className="w-full py-16 md:py-28 lg:py-36 xl:py-48 bg-gradient-to-b from-background to-background/80 relative">
+        <section id="home" className="w-full py-16 md:py-28 lg:py-36 xl:py-48 bg-gradient-to-b from-background to-background/80 relative">
           <ThreeScene />
           <div className="container px-4 md:px-6 relative z-10">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
@@ -201,15 +202,15 @@ export default function Home() {
                 </SlideIn>
                 <FadeIn delay={0.3}>
                   <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                    <Link href="/solutions">
+                    <a href="#solutions">
                       <Button className="inline-flex bg-blue-700 h-10 items-center justify-center group">
                         Explore Solutions
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </Button>
-                    </Link>
-                    <Link href="/contact">
+                    </a>
+                    <a href="#contact">
                       <Button variant="outline">Contact Us</Button>
-                    </Link>
+                    </a>
                   </div>
                 </FadeIn>
               </div>
@@ -419,6 +420,16 @@ export default function Home() {
             </FadeIn>
           </div>
         </section>
+        <section id="about">
+          <AboutPage />
+        </section>
+        <section id="solutions">
+          <SolutionsPage/>
+        </section>
+        <section id="contact">
+          <ContactPage />
+        </section>
+
       </div>
     </PageTransition>
   )

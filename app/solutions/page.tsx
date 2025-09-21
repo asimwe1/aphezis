@@ -12,7 +12,7 @@ export default function SolutionsPage() {
     <PageTransition>
       <div className="flex flex-col min-h-screen">
         {/* Hero Section */}
-        <section className="w-full py-16 md:py-28 lg:py-36 bg-gradient-to-b from-background to-background/80">
+        <section className="w-full py-4 md:py-8 lg:py-16 bg-gradient-to-b from-background to-background/80">
           <div className="container px-4 md:px-6">
             <FadeIn>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -28,11 +28,11 @@ export default function SolutionsPage() {
         </section>
 
         {/* Software Development */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary/5">
+        <section className="w-full py-4 md:py-8 lg:py-10 bg-primary/5">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <SlideIn direction="left">
-                <div className="flex flex-col justify-center space-y-4">
+                <div className="flex flex-col justify-center space-y-2">
                   <motion.div
                     className="inline-flex items-center space-x-2 rounded-md bg-primary/10 px-3 py-1 text-sm font-medium text-primary"
                     whileHover={{ backgroundColor: "rgba(var(--primary), 0.2)" }}
@@ -132,7 +132,7 @@ export default function SolutionsPage() {
         </section>
 
         {/* Web Development */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-4 md:py-8 lg:py-10">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[400px_1fr] lg:gap-12 xl:grid-cols-[600px_1fr]">
               <SlideIn direction="left">
@@ -236,7 +236,7 @@ export default function SolutionsPage() {
         </section>
 
         {/* Forex & Crypto Trading */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-primary/5">
+        <section className="w-full py-4 md:py-8 lg:py-10 bg-primary/5">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <SlideIn direction="left">
@@ -342,7 +342,7 @@ export default function SolutionsPage() {
         </section>
 
         {/* Internship Program */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full py-4 md:py-8 lg:py-10">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[400px_1fr] lg:gap-12 xl:grid-cols-[600px_1fr]">
               <SlideIn direction="left">

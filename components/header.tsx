@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
@@ -11,15 +11,54 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "/about" },
-  { name: "Solutions", href: "/solutions" },
-  { name: "Contact Us", href: "/contact" },
+  { name: "Home", href: "/", section: "home" },
+  { name: "About Us", href: "/#about", section: "about" },
+  { name: "Solutions", href: "/#solutions", section: "solutions" },
+  { name: "Contact Us", href: "/#contact", section: "contact" },
 ]
 
 export default function Header() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navigation.map(nav => nav.section)
+      const scrollPosition = window.scrollY + 100 // Offset for header height
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i])
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(sections[i])
+          break
+        }
+      }
+    }
+
+    // Set initial active section based on hash
+    const hash = window.location.hash.replace('#', '')
+    if (hash && navigation.some(nav => nav.section === hash)) {
+      setActiveSection(hash)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const handleNavClick = (section: string) => {
+    setActiveSection(section)
+    setMobileMenuOpen(false)
+  }
+
+  const isActive = (item: typeof navigation[0]) => {
+    if (pathname !== '/') {
+      return pathname === item.href
+    }
+    return activeSection === item.section
+  }
 
   return (
     <motion.header
@@ -29,74 +68,75 @@ export default function Header() {
       transition={{ duration: 0.3 }}
     >
       <div className="bg-blue-800 border-gray-900/10">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between py-2 px-6 lg:px-8" aria-label="Global">
-        <motion.div
-          className="flex lg:flex-1"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link href="/" className="-m-1.5 p-1.5">
-            <motion.span className="font-bold text-xl" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
-            <Image
-  src="/logo2.png"
-  alt="ApheZis Logo"
-  width={40}
-  height={40}
-  className="h-full w-[10rem] inline-block drop-shadow-4xl "
-  style={{ filter: 'drop-shadow(0 0 2px rgba(0,0,0,0.5))' }}
-/>
-
-            </motion.span>
-            <span className="sr-only">ApheZis</span>
-          </Link>
-        </motion.div>
-        <div className="flex lg:hidden">
-          <Button
-            variant="ghost"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
-            onClick={() => setMobileMenuOpen(true)}
+        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8" aria-label="Global">
+          <motion.div
+            className="flex lg:flex-1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
           >
-            <span className="sr-only">Open main menu</span>
-            <Menu className="h-6 w-6" aria-hidden="true" />
-          </Button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map((item, index) => (
-            <motion.div
-              key={item.name}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+            <Link href="/" className="-m-1.5 p-1.5">
+              <motion.span className="font-bold text-xl" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+                <Image
+                  src="/logo2.png"
+                  alt="ApheZis Logo"
+                  width={32}
+                  height={32}
+                  className="h-full w-[8rem] inline-block drop-shadow-4xl "
+                  style={{ filter: 'drop-shadow(0 0 2px rgba(0,0,0,0.5))' }}
+                />
+
+              </motion.span>
+              <span className="sr-only">ApheZis</span>
+            </Link>
+          </motion.div>
+          <div className="flex lg:hidden">
+            <Button
+              variant="ghost"
+              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+              onClick={() => setMobileMenuOpen(true)}
             >
-              <Link
-                href={item.href}
-                className={cn(
-                  "text-sm font-semibold leading-6 transition-colors hover:text-white relative",
-                  pathname === item.href ? "text-white" : "text-white/80",
-                )}
+              <span className="sr-only">Open main menu</span>
+              <Menu className="h-6 w-6" aria-hidden="true" />
+            </Button>
+          </div>
+          <div className="hidden lg:flex lg:gap-x-12">
+            {navigation.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
               >
-                {item.name}
-                {pathname === item.href && (
-                  <motion.span
-                    className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-white"
-                    layoutId="underline"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-        <motion.div
-          className="hidden lg:flex lg:flex-1 lg:justify-end"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <ThemeToggle />
-        </motion.div>
-      </nav>
+                <Link
+                  href={item.href}
+                  onClick={() => handleNavClick(item.section)}
+                  className={cn(
+                    "text-sm font-semibold leading-6 transition-colors hover:text-white relative",
+                    isActive(item) ? "text-white" : "text-white/80",
+                  )}
+                >
+                  {item.name}
+                  {isActive(item) && (
+                    <motion.span
+                      className="absolute -bottom-1.5 left-0 right-0 h-0.5 bg-white"
+                      layoutId="underline"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            className="hidden lg:flex lg:flex-1 lg:justify-end"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <ThemeToggle />
+          </motion.div>
+        </nav>
       </div>
 
       {/* Mobile menu */}
@@ -139,9 +179,9 @@ export default function Header() {
                         href={item.href}
                         className={cn(
                           "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-accent",
-                          pathname === item.href ? "text-primary" : "text-foreground/80",
+                          isActive(item) ? "text-primary" : "text-foreground/80",
                         )}
-                        onClick={() => setMobileMenuOpen(false)}
+                        onClick={() => handleNavClick(item.section)}
                       >
                         {item.name}
                       </Link>
