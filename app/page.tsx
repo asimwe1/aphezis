@@ -13,6 +13,7 @@ import { OrbitControls } from "three-stdlib"
 import AboutPage from "./about/page"
 import SolutionsPage from "./solutions/page"
 import ContactPage from "./contact/page"
+import PortfolioSection from "@/components/PortifolioSection"
 
 // Dynamically import ThreeScene to ensure client-side rendering
 const ThreeScene = dynamic(() => Promise.resolve(() => {
@@ -221,7 +222,7 @@ export default function Home() {
         </section>
 
         {/* Services Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-muted/50">
+        <section className="w-full py-4 md:py-6 lg:py-8 bg-muted/50">
           <div className="container px-4 md:px-6">
             <FadeIn>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -307,8 +308,10 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Portfolio Section */}
+        <PortfolioSection /> */
         {/* Testimonials Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full">
           <div className="container px-4 md:px-6">
             <FadeIn>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -431,6 +434,7 @@ export default function Home() {
         </section>
 
       </div>
+
     </PageTransition>
   )
 }

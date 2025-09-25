@@ -230,7 +230,7 @@ export default function ContactPage() {
                           </motion.div>
                           <div>
                             <h3 className="font-bold">Call and Whatsap us</h3>
-                            <p className="text-muted-foreground">+250 790 415 761/ +86 183 0507 3441</p>
+                            <p className="text-muted-foreground">+250 789 905 377/ +86 183 0507 3441</p>
                           </div>
                         </div>
                       </CardContent>
