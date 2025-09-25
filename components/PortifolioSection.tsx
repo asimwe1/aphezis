@@ -39,13 +39,7 @@ const projects = [
     type: "Team Project",
     avatar: "G",
   },
-  {
-    title: "Kibogora Polytechnic Platform",
-    desc: "Manage student/organisation employee records, courses, and faculty information with ease.",
-    client: "Kibogora Polytechnic",
-    type: "Client",
-    avatar: "K",
-  },
+
 ]
 
 export default function PortfolioSection() {
