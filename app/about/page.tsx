@@ -319,7 +319,7 @@ export default function AboutPage() {
                         />
                       </motion.div>
                       <div>
-                        <h3 className="text-xl font-bold">Asimwe Landry</h3>
+                        <h3 className="text-xl font-bold">Mugisha Nour Gratien</h3>
                         <p className="text-muted-foreground">Lead Developer</p>
                       </div>
                     </CardContent>
