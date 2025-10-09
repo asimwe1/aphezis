@@ -261,7 +261,7 @@ export default function AboutPage() {
                         transition={{ duration: 0.2 }}
                       >
                         <Image
-                          src="/placeholder.svg?height=96&width=96"
+                          src="/sadeny.png?height=96&width=96"
                           width={96}
                           height={96}
                           alt="Team Member"
@@ -286,7 +286,7 @@ export default function AboutPage() {
                         transition={{ duration: 0.2 }}
                       >
                         <Image
-                          src="/placeholder.svg?height=96&width=96"
+                          src="/garou.png?height=96&width=96"
                           width={96}
                           height={96}
                           alt="Team Member"
